@@ -18,7 +18,18 @@ const openProductsId = async (req, res) => {
   res.status(200).json(message);
 };
 
+const createProduct = async (req, res) => {
+  const { name } = req.body;
+
+  const { type, message } = await productsService.createProduct(name);
+
+  if (type) res.status(404).json(message);
+
+  res.status(201).json(message);
+};
+
 module.exports = {
   openProducts,
   openProductsId,
+  createProduct,
 };
