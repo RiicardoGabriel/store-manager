@@ -25,7 +25,7 @@ const findById = async (productId) => {
     'SELECT * FROM products WHERE id = ?',
     [productId],
   );
-  console.log(camelize(products));
+
   return camelize(products);
 };
 
@@ -41,8 +41,8 @@ const insert = async (product) => {
     const [{ insertId }] = await connection.execute(
       `INSERT INTO products (${columns}) VALUE (${placeholders})`,
       [...Object.values(product)],
-      );
-  console.log(insertId);
+    );
+  
   return insertId;
 };
 
