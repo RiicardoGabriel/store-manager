@@ -80,18 +80,13 @@
     "colId": "history",
     "containerId": "",
     "name": "http://127.0.0.1:3000/sales",
-    "url": "http://127.0.0.1:3000/sales",
-    "method": "POST",
+    "url": "http://127.0.0.1:3000/sales/6",
+    "method": "GET",
     "sortNum": 0,
     "created": "2022-10-13T13:13:17.620Z",
-    "modified": "2022-10-13T17:46:24.172Z",
+    "modified": "2022-10-13T22:37:40.849Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "[\n  {\n    \"productId\": 55,\n    \"quantity\": 2\n  },\n  {\n    \"productId\": 3,\n    \"quantity\": 1\n  }\n]",
-      "form": []
-    },
     "tests": []
   }
 ]
