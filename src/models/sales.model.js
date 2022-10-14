@@ -25,6 +25,15 @@ const findBySaleId = async (saleId) => {
   return camelize(result);
 };
 
+const findBySaleIdParams = async (saleId) => {
+  const [[result]] = await connection.execute(
+    'SELECT * FROM sales WHERE id = ?',
+    [saleId],
+  );
+
+  return camelize(result);
+};
+
 const newId = async () => {
   const [rows] = await connection.execute(
     'INSERT INTO StoreManager.sales VALUE ()',
@@ -32,6 +41,15 @@ const newId = async () => {
   );
 
   return (rows.insertId);
+};
+
+const deleteSale = async (id) => {
+  await connection.execute(
+    'DELETE FROM sales WHERE id = ?',
+    [id],
+  );
+
+  return { id };
 };
 
 const insert = async (sales) => {
@@ -53,4 +71,6 @@ module.exports = {
   findBySales,
   findBySaleId,
   insert,
+  findBySaleIdParams,
+  deleteSale,
 };
