@@ -47,6 +47,15 @@ const deleteProduct = async (id) => {
   return { id };
 };
 
+const searchProduct = async (name) => {
+  const products = await connection.execute(
+    `SELECT * FROM products WHERE name LIKE '%${name}%'`,
+    [name],
+  );
+  
+  return camelize(products[0]);
+};
+
 const insert = async (product) => {
   const columns = Object.keys(snakeize(product))
     .map((key) => `${key}`)
@@ -71,4 +80,5 @@ module.exports = {
   insert,
   updateProduct,
   deleteProduct,
+  searchProduct,
 };
