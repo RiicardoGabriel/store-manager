@@ -29,6 +29,15 @@ const findById = async (productId) => {
   return camelize(products);
 };
 
+const updateProduct = async (id, name) => {
+  await connection.execute(
+    'UPDATE products SET name = ? WHERE id = ?',
+    [name, id],
+  );
+
+  return { id, name };
+};
+
 const insert = async (product) => {
   const columns = Object.keys(snakeize(product))
     .map((key) => `${key}`)
@@ -51,4 +60,5 @@ module.exports = {
   findByProductsId,
   findById,
   insert,
+  updateProduct,
 };

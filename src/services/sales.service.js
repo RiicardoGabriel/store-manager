@@ -6,6 +6,7 @@ const getSales = async () => {
 };
 
 const getSaleId = async (id) => {
+  console.log(id);
   const result = await salesModel.findBySaleId(id);
   if (!result.length) return { code: 404, error: 'Sale not found' };
   return { type: null, message: result };
