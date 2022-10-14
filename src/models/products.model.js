@@ -38,6 +38,15 @@ const updateProduct = async (id, name) => {
   return { id, name };
 };
 
+const deleteProduct = async (id) => {
+  await connection.execute(
+    'DELETE FROM products WHERE id = ?',
+    [id],
+  );
+
+  return { id };
+};
+
 const insert = async (product) => {
   const columns = Object.keys(snakeize(product))
     .map((key) => `${key}`)
@@ -61,4 +70,5 @@ module.exports = {
   findById,
   insert,
   updateProduct,
+  deleteProduct,
 };
