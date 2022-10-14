@@ -52,6 +52,22 @@ const deleteSale = async (id) => {
   return { id };
 };
 
+const updateSale = async (id, sales) => {
+  sales.map(async (i) => {
+    console.log(i.productId, i.quantity, id);
+    await connection.execute(
+      `UPDATE StoreManager.sales_products
+      SET quantity = ? WHERE product_id = ? AND sale_id = ?`,
+       [i.quantity, i.productId, id],
+    );
+  });
+
+  return {
+    saleId: id,
+    itemsUpdated: sales,
+  };
+};
+
 const insert = async (sales) => {
   const id = await newId();
   sales.map(async (i) => {
@@ -73,4 +89,5 @@ module.exports = {
   insert,
   findBySaleIdParams,
   deleteSale,
+  updateSale,
 };
