@@ -85,6 +85,7 @@ const insert = async (sales) => {
 
 module.exports = {
   findBySales,
+  newId,
   findBySaleId,
   insert,
   findBySaleIdParams,

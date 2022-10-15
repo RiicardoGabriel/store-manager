@@ -61,4 +61,19 @@ describe('Teste de unidade do salesController', function () {
     expect(res.status).to.have.been.calledWith(201);
     expect(res.json).to.have.been.calledWith(newSaleMock);
   });
+  it('Deletando uma venda', async function () {
+    const res = {};
+    const req = { params: { id: 1 } };
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+    sinon
+      .stub(salesService, 'deleteSale')
+      .resolves({ type: null, message: [] });
+
+    await salesController.deleteSale(req, res);
+
+    expect(res.status).to.have.been.calledWith(204);
+    expect(res.json).to.have.been.calledWith([]);
+  });
 });
